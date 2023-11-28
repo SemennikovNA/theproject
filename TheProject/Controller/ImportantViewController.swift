@@ -11,7 +11,7 @@ class ImportantViewController: UIViewController {
     
     //MARK: - Properties
     
-    let mainVC = MainView()
+    let mainVC = MainViewController()
     
     //MARK: - Life cycle
     
@@ -27,7 +27,7 @@ class ImportantViewController: UIViewController {
     func configureViewElements() {
         
         //Configure view
-        view.backgroundColor = mainVC.greenBackgroundColor
+        view.backgroundColor = .back
         
         //Configure navigation view
         let backButton = UIBarButtonItem()

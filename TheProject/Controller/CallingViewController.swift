@@ -11,7 +11,7 @@ class CallingViewController: UIViewController {
 
     //MARK: - Properties
     
-    let mainVC = MainView()
+    let mainVC = MainViewController()
     
     //MARK: - Life cycle
     
@@ -27,7 +27,7 @@ class CallingViewController: UIViewController {
     func configureViewElements() {
         
         //Configure view
-        view.backgroundColor = mainVC.greenBackgroundColor
+        view.backgroundColor = .back
         
         //Configure navigation view controller
         let backButton = UIBarButtonItem()

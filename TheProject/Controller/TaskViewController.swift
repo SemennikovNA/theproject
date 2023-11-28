@@ -9,9 +9,9 @@ import UIKit
 
 class TaskViewController: UIViewController {
     
-    //MARK: - Properties
+    //MARK: - UI elements
     
-    let mainVC = MainView()
+    var taskTable = TableView()
     
     //MARK: - Life cycle
     
@@ -20,13 +20,15 @@ class TaskViewController: UIViewController {
 
         //Call function's
         configureViewElements()
+        setupConstraints()
     }
     
     //MARK: - Methods
     
     func configureViewElements() {
         //Configure view
-        view.backgroundColor = mainVC.greenBackgroundColor
+        view.backgroundColor = .back
+        view.addSubview(taskTable)
         
         //Configure navigation controller
         let backButton = UIBarButtonItem()
@@ -37,5 +39,22 @@ class TaskViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
     }
-
 }
+
+extension TaskViewController {
+    
+    func setupConstraints() {
+        
+        taskTable.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+                taskTable.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
+                taskTable.leftAnchor.constraint(equalTo: view.leftAnchor),
+                taskTable.rightAnchor.constraint(equalTo: view.rightAnchor),
+                taskTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+}
+
+
+

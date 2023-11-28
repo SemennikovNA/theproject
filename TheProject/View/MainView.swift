@@ -1,36 +1,30 @@
+//
 //  MainView.swift
 //  TheProject
 //
-//  Created by Nikita on 28.10.2023.
+//  Created by Nikita on 29.11.2023.
+//
 
 import UIKit
 
-class MainView: UIViewController {
-    
-    //MARK: - Properties
-    /// Background colors
-    let greenBackgroundColor = UIColor(red: 79 / 255, green: 111 / 255, blue: 82 / 255, alpha: 1)
-    let callingButonColor = UIColor(red: 236 / 255, green: 227 / 255, blue: 206 / 255, alpha: 1)
-    let customLightGreen = UIColor(red: 115 / 255, green: 144 / 255, blue: 114 / 255, alpha: 1)
-    let taskButtonColor = UIColor(red: 157 / 255, green: 178 / 255, blue: 191 / 255, alpha: 1)
-    let importantButtonColor = UIColor(red: 252 / 155, green: 200 / 255, blue: 209 / 255, alpha: 1)
-    let meetingButtonColor = UIColor(red: 255 / 255, green: 217 / 255, blue: 102 / 255, alpha: 1)
-    let habbitsButtonColor = UIColor(red: 159 / 255, green: 192 / 255, blue: 136 / 255, alpha: 1)
+class MainView: UIView {
     
     //MARK: - UI Elements
     
-    let infoLabel: UILabel = {
+    private lazy var infoLabel: UILabel = {
         let label = UILabel()
         label.frame = .zero
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = .dynamicText
         return label
     }()
     
-    let horizontalScroll: UIScrollView = {
+    private lazy var horizontalScroll: UIScrollView = {
         let scroll = UIScrollView()
         scroll.frame = .zero
         scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.backgroundColor = .scrollBack
         scroll.bounces = true
         scroll.alwaysBounceHorizontal = true
         scroll.showsHorizontalScrollIndicator = false
@@ -46,9 +40,10 @@ class MainView: UIViewController {
         let but = UIButton()
         but.translatesAutoresizingMaskIntoConstraints = false
         but.frame = .zero
+        but.backgroundColor = .task
         but.setTitle("Задачи 📋", for: .normal)
         but.titleLabel?.textAlignment = .center
-        but.setTitleColor(.black, for: .normal)
+        but.setTitleColor(.dynamicText, for: .normal)
         but.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         but.layer.cornerRadius = 15
         but.layer.borderWidth = 1
@@ -61,9 +56,10 @@ class MainView: UIViewController {
         let but = UIButton()
         but.translatesAutoresizingMaskIntoConstraints = false
         but.frame = .zero
+        but.backgroundColor = .important
         but.setTitle("Важное ‼️", for: .normal)
         but.titleLabel?.textAlignment = .center
-        but.setTitleColor(.black, for: .normal)
+        but.setTitleColor(.dynamicText, for: .normal)
         but.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         but.layer.cornerRadius = 15
         but.layer.borderWidth = 1
@@ -78,7 +74,8 @@ class MainView: UIViewController {
         but.frame = .zero
         but.setTitle("Встречи 🤝🏽", for: .normal)
         but.titleLabel?.textAlignment = .center
-        but.setTitleColor(.black, for: .normal)
+        but.backgroundColor = .meeting
+        but.setTitleColor(.dynamicText, for: .normal)
         but.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         but.layer.cornerRadius = 15
         but.layer.borderWidth = 1
@@ -93,7 +90,8 @@ class MainView: UIViewController {
         but.frame = .zero
         but.setTitle("Созвоны 📱", for: .normal)
         but.titleLabel?.textAlignment = .center
-        but.setTitleColor(.black, for: .normal)
+        but.backgroundColor = .calling
+        but.setTitleColor(.dynamicText, for: .normal)
         but.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         but.layer.cornerRadius = 15
         but.layer.borderWidth = 1
@@ -108,7 +106,8 @@ class MainView: UIViewController {
         but.frame = .zero
         but.setTitle("Привычки 🛠️", for: .normal)
         but.titleLabel?.textAlignment = .center
-        but.setTitleColor(.black, for: .normal)
+        but.backgroundColor = .habbits
+        but.setTitleColor(.dynamicText, for: .normal)
         but.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         but.layer.cornerRadius = 15
         but.layer.borderWidth = 1
@@ -117,51 +116,30 @@ class MainView: UIViewController {
         return but
     }()
     
-    //MARK: - Life cycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        // Call function's
+        setupView()
+        setupConstraints()
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Call functions
-        configureViewElements()
-//        nowDate()
-        addSubviews()
-        makeConstraint()
-        
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     //MARK: - Private methods
-    
-    private func configureViewElements() {
-        
-        // Configure main view
-        view.backgroundColor = greenBackgroundColor
-        horizontalScroll.backgroundColor = customLightGreen
-        taskButton.backgroundColor = taskButtonColor
-        importantButton.backgroundColor = importantButtonColor
-        meetingButton.backgroundColor = meetingButtonColor
-        callingButton.backgroundColor = callingButonColor
-        habbitsButton.backgroundColor = habbitsButtonColor
-        
+
         // Addeds targer
-        taskButton.addTarget(self, action: #selector(taskButtonTapped), for: .touchUpInside)
-        importantButton.addTarget(self, action: #selector(importantButtonTapped), for: .touchUpInside)
-        meetingButton.addTarget(self, action: #selector(meetingButtonTapped), for: .touchUpInside)
-        callingButton.addTarget(self, action: #selector(callingButtonTapped), for: .touchUpInside)
-        habbitsButton.addTarget(self, action: #selector(habbitsButtonTapped), for: .touchUpInside)
-        
-        // Configure navigation controller
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Привет, Никита 🤓"
-        self.navigationItem.largeTitleDisplayMode = .always
-        // Configure navigation buttons
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(navigationButtonTapped))
-        self.navigationItem.rightBarButtonItem?.tintColor = callingButonColor
-    }
+//        taskButton.addTarget(self, action: #selector(taskButtonTapped), for: .touchUpInside)
+//        importantButton.addTarget(self, action: #selector(importantButtonTapped), for: .touchUpInside)
+//        meetingButton.addTarget(self, action: #selector(meetingButtonTapped), for: .touchUpInside)
+//        callingButton.addTarget(self, action: #selector(callingButtonTapped), for: .touchUpInside)
+//        habbitsButton.addTarget(self, action: #selector(habbitsButtonTapped), for: .touchUpInside)
     
-    private func addSubviews() {
-        view.addSubview(infoLabel)
-        view.addSubview(horizontalScroll)
+    private func setupView() {
+        self.addSubview(infoLabel)
+        self.addSubview(horizontalScroll)
         horizontalScroll.addSubview(taskButton)
         horizontalScroll.addSubview(importantButton)
         horizontalScroll.addSubview(meetingButton)
@@ -169,66 +147,21 @@ class MainView: UIViewController {
         horizontalScroll.addSubview(habbitsButton)
         
     }
-    
-//    private func nowDate() {
-//        
-//        let now = Date()
-//        let dtFormatter = DateFormatter()
-//        
-//        dtFormatter.dateStyle = .medium
-//        dtFormatter.timeStyle = .short
-//        
-//        let dateTimeFormated = dtFormatter.string(from: now)
-//        infoLabel.text = "\(dateTimeFormated)"
-//    }
-
-    //MARK: - @objc methods
-    
-    @objc func navigationButtonTapped() {
-        let secondVC = SettingViewController()
-        navigationController?.pushViewController(secondVC, animated: true)
-    }
-    
-    @objc func taskButtonTapped() {
-        let taskVC = TaskViewController()
-        navigationController?.pushViewController(taskVC, animated: true)
-    }
-    
-    @objc func importantButtonTapped() {
-        let importantVC = ImportantViewController()
-        navigationController?.pushViewController(importantVC, animated: true)
-    }
-    
-    @objc func meetingButtonTapped() {
-        let meetingVC = MeetingViewController()
-        navigationController?.pushViewController(meetingVC, animated: true)
-    }
-    
-    @objc func callingButtonTapped() {
-        let callingVC = CallingViewController()
-        navigationController?.pushViewController(callingVC, animated: true)
-    }
-    
-    @objc func habbitsButtonTapped() {
-        let habbitsVC = HabbitsViewController()
-        navigationController?.pushViewController(habbitsVC, animated: true)
-    }
 }
+
 
 //MARK: - Extension
 
 extension MainView {
     
-    //MARK: - NSLayout methods
-    
-    func makeConstraint() {
+    func setupConstraints() {
         
         let buttonsSize: CGSize = CGSize(width: 140, height: 55)
         
         // Info label
         NSLayoutConstraint.activate([
-            infoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
-            infoLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
+            infoLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 150),
+            infoLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15),
             infoLabel.heightAnchor.constraint(equalToConstant: 30),
             infoLabel.widthAnchor.constraint(equalToConstant: 250)
         ])
@@ -236,8 +169,8 @@ extension MainView {
         // Content stack
         NSLayoutConstraint.activate([
             horizontalScroll.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 10),
-            horizontalScroll.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
-            horizontalScroll.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
+            horizontalScroll.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15),
+            horizontalScroll.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15),
             horizontalScroll.heightAnchor.constraint(equalToConstant: 70)
         ])
         

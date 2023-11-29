@@ -17,44 +17,56 @@ class TaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //Call function's
-        configureViewElements()
+        setupView()
         setupConstraints()
     }
     
-    //MARK: - Methods
+    //MARK: - Private methods
     
-    func configureViewElements() {
+    private func setupView() {
+        
         //Configure view
         view.backgroundColor = .back
-        view.addSubview(taskTable)
+        view.addSubviews(taskTable)
         
         //Configure navigation controller
         let backButton = UIBarButtonItem()
+        let addedButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addedButtonTapped))
+        addedButton.tintColor = .dynamicText
         backButton.title = "На главную"
-        backButton.tintColor = .black
+        backButton.tintColor = .dynamicText
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        self.navigationItem.rightBarButtonItem = addedButton
         self.navigationItem.title = "Задачи 📋"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
     }
+    
+    //MARK: - Objective-C methods
+    
+    @objc func addedButtonTapped() {
+        let addedVC = AddedViewController()
+        addedVC.modalTransitionStyle = .flipHorizontal
+        addedVC.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(addedVC, animated: true)
+    }
 }
+
+//MARK: - Extension
 
 extension TaskViewController {
     
     func setupConstraints() {
         
-        taskTable.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
-                taskTable.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
-                taskTable.leftAnchor.constraint(equalTo: view.leftAnchor),
-                taskTable.rightAnchor.constraint(equalTo: view.rightAnchor),
-                taskTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
+            // Task table
+            taskTable.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
+            taskTable.leftAnchor.constraint(equalTo: view.leftAnchor),
+            taskTable.rightAnchor.constraint(equalTo: view.rightAnchor),
+            taskTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
-
-
-

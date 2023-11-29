@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
         
         // Configure view
         view.backgroundColor = .back
-        view.addSubview(mainView)
+        view.addSubviews(mainView)
         
         // Configure navigation controller
         self.navigationController?.navigationBar.prefersLargeTitles = true

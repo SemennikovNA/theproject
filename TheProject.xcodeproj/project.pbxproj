@@ -14,6 +14,10 @@
 		1E3A1DF42AF11A580083A4CC /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A1DF32AF11A580083A4CC /* CustomTableViewCell.swift */; };
 		1E586DA82B16735100CA1E00 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E586DA72B16735100CA1E00 /* MainView.swift */; };
 		1E586DAA2B16825400CA1E00 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E586DA92B16825400CA1E00 /* TableView.swift */; };
+		1E586DAD2B179D4C00CA1E00 /* UIView - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E586DAC2B179D4C00CA1E00 /* UIView - Extension.swift */; };
+		1E586DAF2B17C29A00CA1E00 /* AddedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E586DAE2B17C29A00CA1E00 /* AddedView.swift */; };
+		1E586DB12B17C65C00CA1E00 /* UIStackView - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E586DB02B17C65C00CA1E00 /* UIStackView - Extension.swift */; };
+		1E586DB32B17C90300CA1E00 /* AddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E586DB22B17C90300CA1E00 /* AddedViewController.swift */; };
 		1EF0E2BA2AECE85800B5F79D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0E2B92AECE85800B5F79D /* AppDelegate.swift */; };
 		1EF0E2BC2AECE85800B5F79D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0E2BB2AECE85800B5F79D /* SceneDelegate.swift */; };
 		1EF0E2BE2AECE85800B5F79D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0E2BD2AECE85800B5F79D /* MainViewController.swift */; };
@@ -30,6 +34,10 @@
 		1E3A1DF32AF11A580083A4CC /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		1E586DA72B16735100CA1E00 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1E586DA92B16825400CA1E00 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		1E586DAC2B179D4C00CA1E00 /* UIView - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView - Extension.swift"; sourceTree = "<group>"; };
+		1E586DAE2B17C29A00CA1E00 /* AddedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedView.swift; sourceTree = "<group>"; };
+		1E586DB02B17C65C00CA1E00 /* UIStackView - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView - Extension.swift"; sourceTree = "<group>"; };
+		1E586DB22B17C90300CA1E00 /* AddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedViewController.swift; sourceTree = "<group>"; };
 		1EF0E2B62AECE85800B5F79D /* TheProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF0E2B92AECE85800B5F79D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EF0E2BB2AECE85800B5F79D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +65,7 @@
 				1E586DA72B16735100CA1E00 /* MainView.swift */,
 				1E586DA92B16825400CA1E00 /* TableView.swift */,
 				1E3A1DF32AF11A580083A4CC /* CustomTableViewCell.swift */,
+				1E586DAE2B17C29A00CA1E00 /* AddedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -78,6 +87,7 @@
 				1E3A1DEB2AF00D840083A4CC /* MeetingViewController.swift */,
 				1EF0E2CD2AED01C400B5F79D /* SettingViewController.swift */,
 				1E3A1DEF2AF013BD0083A4CC /* TaskViewController.swift */,
+				1E586DB22B17C90300CA1E00 /* AddedViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -100,6 +110,15 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		1E586DAB2B179D3300CA1E00 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1E586DAC2B179D4C00CA1E00 /* UIView - Extension.swift */,
+				1E586DB02B17C65C00CA1E00 /* UIStackView - Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		1EF0E2AD2AECE85800B5F79D = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +138,7 @@
 		1EF0E2B82AECE85800B5F79D /* TheProject */ = {
 			isa = PBXGroup;
 			children = (
+				1E586DAB2B179D3300CA1E00 /* Extension */,
 				1E586DA62B166CBD00CA1E00 /* Support */,
 				1E586DA52B166C1200CA1E00 /* Aplication */,
 				1E586DA42B166BE400CA1E00 /* Controller */,
@@ -199,13 +219,17 @@
 			files = (
 				1EF0E2BE2AECE85800B5F79D /* MainViewController.swift in Sources */,
 				1E586DAA2B16825400CA1E00 /* TableView.swift in Sources */,
+				1E586DB12B17C65C00CA1E00 /* UIStackView - Extension.swift in Sources */,
 				1EF0E2CE2AED01C400B5F79D /* SettingViewController.swift in Sources */,
 				1E586DA82B16735100CA1E00 /* MainView.swift in Sources */,
+				1E586DB32B17C90300CA1E00 /* AddedViewController.swift in Sources */,
 				1E3A1DEC2AF00D840083A4CC /* MeetingViewController.swift in Sources */,
+				1E586DAF2B17C29A00CA1E00 /* AddedView.swift in Sources */,
 				1EF0E2BA2AECE85800B5F79D /* AppDelegate.swift in Sources */,
 				1EF0E2BC2AECE85800B5F79D /* SceneDelegate.swift in Sources */,
 				1E3A1DEE2AF0101C0083A4CC /* ImportantViewController.swift in Sources */,
 				1E3A1DF42AF11A580083A4CC /* CustomTableViewCell.swift in Sources */,
+				1E586DAD2B179D4C00CA1E00 /* UIView - Extension.swift in Sources */,
 				1EF0E2D02AED664A00B5F79D /* HabbitsViewController.swift in Sources */,
 				1E3A1DEA2AF00A7C0083A4CC /* CallingViewController.swift in Sources */,
 				1E3A1DF02AF013BD0083A4CC /* TaskViewController.swift in Sources */,

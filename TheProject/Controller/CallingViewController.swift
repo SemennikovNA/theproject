@@ -11,7 +11,7 @@ class CallingViewController: UIViewController {
 
     //MARK: - Properties
     
-    let mainVC = MainViewController()
+    let callingTable = TableView()
     
     //MARK: - Life cycle
     
@@ -19,24 +19,52 @@ class CallingViewController: UIViewController {
         super.viewDidLoad()
         
         //Call function's
-        configureViewElements()
+        setupView()
+        setupConstraints()
     }
     
     //MARK: - Methods
     
-    func configureViewElements() {
+    func setupView() {
         
         //Configure view
         view.backgroundColor = .back
+        view.addSubviews(callingTable)
         
         //Configure navigation view controller
         let backButton = UIBarButtonItem()
+        let addedButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addedButtonTapped))
+        addedButton.tintColor = .dynamicText
         backButton.title = "На главную"
-        backButton.tintColor = .black
+        backButton.tintColor = .dynamicText
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        self.navigationItem.rightBarButtonItem = addedButton
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.title = "Созвоны 📱"
         
+    }
+    
+    //MARK: - Objective-C methods
+    
+    @objc func addedButtonTapped() {
+        
+    }
+}
+
+//MARK: - Extension
+
+extension CallingViewController {
+    
+    func setupConstraints() {
+        
+        NSLayoutConstraint.activate([
+            
+            // Calling table
+            callingTable.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
+            callingTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            callingTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            callingTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }

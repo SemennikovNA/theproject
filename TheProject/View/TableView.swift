@@ -48,6 +48,8 @@ extension TableView {
 
 extension TableView: UITableViewDelegate, UITableViewDataSource {
     
+    //MARK: Table view data source and delegate methods
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
@@ -55,13 +57,34 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         cell.backgroundColor = .back
-        cell.label.text = "Test"
-        cell.label.textColor = .black
+        cell.taskLabel.text = "Test"
+        cell.descriptionLabel.text = "Test"
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let done = UIContextualAction(style: .normal, title: "Выполнено") { (contextualAction, view, boolValue) in
+            print("Выполнено")
+        }
+        let favorites = UIContextualAction(style: .normal, title: "Избраное") { (contextualAction, view, boolValue) in
+            print("Добавлено в избраное")
+        }
+        done.backgroundColor = .systemGreen
+        favorites.backgroundColor = .purple
+        favorites.image = UIImage(systemName: "star.fill")
+        let swipe = UISwipeActionsConfiguration(actions: [done, favorites])
+        return swipe
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteButton = UIContextualAction(style: .destructive, title: "Удалить") { (contextualAction, view, boolValue) in
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        let swipe = UISwipeActionsConfiguration(actions: [deleteButton])
+        return swipe
+    }
 }

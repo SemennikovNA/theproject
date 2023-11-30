@@ -32,6 +32,14 @@ class AddedViewController: UIViewController {
         
         // Configure navigation bar
         
+        // Configure added button
+        addedView.addedButtonAddTarget(self, selector: #selector(addedButtonTapped))
+    }
+    
+    //MARK: - Objective-C methods
+     
+    @objc func addedButtonTapped() {
+        print("Hi")
     }
 }
 
@@ -48,4 +56,9 @@ extension AddedViewController {
             addedView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+}
+
+
+#Preview() {
+    AddedViewController()
 }

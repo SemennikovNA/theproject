@@ -36,21 +36,7 @@ class MainView: UIView {
         return scroll
     }()
     
-    let taskButton: UIButton = {
-        let but = UIButton()
-        but.translatesAutoresizingMaskIntoConstraints = false
-        but.frame = .zero
-        but.backgroundColor = .task
-        but.setTitle("Задачи 📋", for: .normal)
-        but.titleLabel?.textAlignment = .center
-        but.setTitleColor(.dynamicText, for: .normal)
-        but.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        but.layer.cornerRadius = 15
-        but.layer.borderWidth = 1
-        but.layer.borderColor = UIColor.black.cgColor
-        but.clipsToBounds = true
-        return but
-    }()
+    var taskButton = UIButton()
     
     let importantButton: UIButton = {
         let but = UIButton()
@@ -138,14 +124,9 @@ class MainView: UIView {
 //        habbitsButton.addTarget(self, action: #selector(habbitsButtonTapped), for: .touchUpInside)
     
     private func setupView() {
-        self.addSubview(infoLabel)
-        self.addSubview(horizontalScroll)
-        horizontalScroll.addSubview(taskButton)
-        horizontalScroll.addSubview(importantButton)
-        horizontalScroll.addSubview(meetingButton)
-        horizontalScroll.addSubview(callingButton)
-        horizontalScroll.addSubview(habbitsButton)
-        
+        taskButton = UIButton(title: "Задачи 📋", titleColor: .dynamicText, backgroundColor: .task, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, fontSize: 20, font: .bold)
+        self.addSubviews(infoLabel, horizontalScroll)
+        horizontalScroll.addSubviews(taskButton, importantButton, meetingButton, callingButton, habbitsButton)
     }
 }
 

@@ -39,7 +39,6 @@ class AddedViewController: UIViewController {
     //MARK: - Objective-C methods
      
     @objc func addedButtonTapped() {
-        print("Hi")
     }
 }
 

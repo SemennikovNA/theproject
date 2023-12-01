@@ -67,18 +67,15 @@ class AddedView: UIView {
         return stack
     }()
     
-    let addedButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Добавить", for: .normal)
-        button.backgroundColor = .systemGreen
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        return button
-    }()
+    var addedButton = UIButton()
+    
+    
+    
     //MARK: - Initialize
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addedButton = UIButton(title: "Добавить", titleColor: .dynamicText, backgroundColor: .systemGreen, cornerRadius: 20, borderWidth: nil, borderColor: nil, image: nil, fontSize: 20, font: .bold)
         
         // Call function's
         setupView()
@@ -106,7 +103,7 @@ class AddedView: UIView {
         self.addSubviews(taskStack, descriptionStack, addedButton)
         
         // Configure button
-        addedButton.layer.cornerRadius = 20
+        
     }
 }
 
@@ -120,7 +117,7 @@ extension AddedView {
         NSLayoutConstraint.activate([
             
             // First stack
-            taskStack.topAnchor.constraint(equalTo: self.topAnchor, constant: 150),
+            taskStack.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
             taskStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             taskStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             
@@ -130,6 +127,8 @@ extension AddedView {
             descriptionStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             
             // Added button
+            addedButton.heightAnchor.constraint(equalToConstant: 50),
+            addedButton.widthAnchor.constraint(equalToConstant: 120),
             addedButton.topAnchor.constraint(equalTo: descriptionStack.bottomAnchor, constant: 200),
             addedButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])

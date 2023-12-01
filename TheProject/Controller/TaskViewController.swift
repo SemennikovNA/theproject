@@ -21,6 +21,10 @@ class TaskViewController: UIViewController {
         //Call function's
         setupView()
         setupConstraints()
+        
+        // Delegate
+        taskTable.dataSource = self
+        taskTable.delegate = self
     }
     
     //MARK: - Private methods
@@ -69,4 +73,23 @@ extension TaskViewController {
             taskTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+}
+
+extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = taskTable.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
+        cell.taskLabel.text = "Привет"
+        cell.descriptionLabel.text = "Это тест"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        50
+    }
+    
 }

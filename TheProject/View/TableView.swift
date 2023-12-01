@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol TableViewSwipe {
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+}
+
 class TableView: UITableView {
     
     //MARK: - Initialize
@@ -27,7 +32,6 @@ class TableView: UITableView {
         self.backgroundColor = .back
         self.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.dataSource = self
         self.delegate = self
     }
 }
@@ -46,25 +50,25 @@ extension TableView {
     }
 }
 
-extension TableView: UITableViewDelegate, UITableViewDataSource {
+extension TableView: UITableViewDelegate {
     
     //MARK: Table view data source and delegate methods
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.backgroundColor = .back
-        cell.taskLabel.text = "Test"
-        cell.descriptionLabel.text = "Test"
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 5
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
+//        cell.backgroundColor = .back
+//        cell.taskLabel.text = "Test"
+//        cell.descriptionLabel.text = "Test"
+//        return cell
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 80
+//    }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let done = UIContextualAction(style: .normal, title: "Выполнено") { (contextualAction, view, boolValue) in
@@ -82,7 +86,6 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteButton = UIContextualAction(style: .destructive, title: "Удалить") { (contextualAction, view, boolValue) in
-            tableView.deselectRow(at: indexPath, animated: true)
         }
         let swipe = UISwipeActionsConfiguration(actions: [deleteButton])
         return swipe

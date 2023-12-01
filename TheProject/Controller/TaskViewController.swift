@@ -9,9 +9,17 @@ import UIKit
 
 class TaskViewController: UIViewController {
     
-    //MARK: - UI elements
+    //MARK: - Properties
     
     var taskTable = TableView()
+    var info = [
+        Tasks(task: "Уборка", description: "Помыть полы"),
+        Tasks(task: "Готовка", description: "Приготовить пюре"),
+        Tasks(task: "Фильм", description: "Посмотреть фильм"),
+        Tasks(task: "Молька", description: "Поменять наполнитель"),
+        Tasks(task: "Звонок", description: "Позвонить бабушке"),
+        Tasks(task: "Поцелуй", description: "Поцеловать Зарифу")
+    ]
     
     //MARK: - Life cycle
     
@@ -24,7 +32,7 @@ class TaskViewController: UIViewController {
         
         // Delegate
         taskTable.dataSource = self
-        taskTable.delegate = self
+        taskTable.reloadData()
     }
     
     //MARK: - Private methods
@@ -51,6 +59,7 @@ class TaskViewController: UIViewController {
     //MARK: - Objective-C methods
     
     @objc func addedButtonTapped() {
+        
         let addedVC = AddedViewController()
         addedVC.modalTransitionStyle = .flipHorizontal
         addedVC.modalPresentationStyle = .fullScreen
@@ -78,13 +87,13 @@ extension TaskViewController {
 extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        info.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = taskTable.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.taskLabel.text = "Привет"
-        cell.descriptionLabel.text = "Это тест"
+        cell.taskLabel.text = info[indexPath.row].task
+        cell.descriptionLabel.text = info[indexPath.row].description
         return cell
     }
     

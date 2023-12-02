@@ -10,7 +10,7 @@ import UIKit
 class TaskViewController: UIViewController {
     
     //MARK: - Properties
-    
+
     var taskTable = TableView()
     var info = [
         Tasks(task: "Уборка", description: "Помыть полы"),
@@ -25,10 +25,11 @@ class TaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         //Call function's
         setupView()
         setupConstraints()
+        
         
         // Delegate
         taskTable.dataSource = self

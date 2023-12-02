@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol TableViewSwipe {
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-}
-
 class TableView: UITableView {
     
     //MARK: - Initialize

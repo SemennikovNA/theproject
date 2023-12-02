@@ -43,13 +43,6 @@ class AddedViewController: UIViewController {
         taskVC.modalTransitionStyle = .flipHorizontal
         guard let task = addedView.taskTextField.text else { return }
         guard let description = addedView.descriptionTextField.text else { return }
-        print(task)
-        print(description)
-        let newTask = Tasks(task: task, description: description)
-        taskVC.info.append(newTask)
-        print(taskVC.info.count)
-        taskVC.taskTable.reloadData()
-        navigationController?.popViewController(animated: true)
     }
 }
 

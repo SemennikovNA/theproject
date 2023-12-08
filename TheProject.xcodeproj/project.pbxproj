@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E3815272B2384BA007EA57E /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3815262B2384BA007EA57E /* CollectionView.swift */; };
+		1E3815292B23859C007EA57E /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3815282B23859C007EA57E /* CustomCollectionViewCell.swift */; };
+		1E38152B2B2388B1007EA57E /* CollectionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38152A2B2388B1007EA57E /* CollectionSet.swift */; };
+		1E38152D2B238A58007EA57E /* UILabel - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38152C2B238A58007EA57E /* UILabel - Extension.swift */; };
 		1E3A1DEA2AF00A7C0083A4CC /* CallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A1DE92AF00A7C0083A4CC /* CallingViewController.swift */; };
 		1E3A1DEC2AF00D840083A4CC /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A1DEB2AF00D840083A4CC /* MeetingViewController.swift */; };
 		1E3A1DEE2AF0101C0083A4CC /* ImportantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A1DED2AF0101C0083A4CC /* ImportantViewController.swift */; };
@@ -29,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E3815262B2384BA007EA57E /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		1E3815282B23859C007EA57E /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		1E38152A2B2388B1007EA57E /* CollectionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSet.swift; sourceTree = "<group>"; };
+		1E38152C2B238A58007EA57E /* UILabel - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel - Extension.swift"; sourceTree = "<group>"; };
 		1E3A1DE92AF00A7C0083A4CC /* CallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingViewController.swift; sourceTree = "<group>"; };
 		1E3A1DEB2AF00D840083A4CC /* MeetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
 		1E3A1DED2AF0101C0083A4CC /* ImportantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +78,8 @@
 				1E586DA92B16825400CA1E00 /* TableView.swift */,
 				1E3A1DF32AF11A580083A4CC /* CustomTableViewCell.swift */,
 				1E586DAE2B17C29A00CA1E00 /* AddedView.swift */,
+				1E3815262B2384BA007EA57E /* CollectionView.swift */,
+				1E3815282B23859C007EA57E /* CustomCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -78,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				1E586DB62B1A5DD900CA1E00 /* Tasks.swift */,
+				1E38152A2B2388B1007EA57E /* CollectionSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +132,7 @@
 				1E586DAC2B179D4C00CA1E00 /* UIView - Extension.swift */,
 				1E586DB02B17C65C00CA1E00 /* UIStackView - Extension.swift */,
 				1E586DB42B1A40FC00CA1E00 /* UIButton - Extension.swift */,
+				1E38152C2B238A58007EA57E /* UILabel - Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -228,11 +240,14 @@
 				1E586DAA2B16825400CA1E00 /* TableView.swift in Sources */,
 				1E586DB12B17C65C00CA1E00 /* UIStackView - Extension.swift in Sources */,
 				1E586DB72B1A5DD900CA1E00 /* Tasks.swift in Sources */,
+				1E38152B2B2388B1007EA57E /* CollectionSet.swift in Sources */,
 				1EF0E2CE2AED01C400B5F79D /* SettingViewController.swift in Sources */,
+				1E3815272B2384BA007EA57E /* CollectionView.swift in Sources */,
 				1E586DA82B16735100CA1E00 /* MainView.swift in Sources */,
 				1E586DB32B17C90300CA1E00 /* AddedViewController.swift in Sources */,
 				1E3A1DEC2AF00D840083A4CC /* MeetingViewController.swift in Sources */,
 				1E586DAF2B17C29A00CA1E00 /* AddedView.swift in Sources */,
+				1E3815292B23859C007EA57E /* CustomCollectionViewCell.swift in Sources */,
 				1EF0E2BA2AECE85800B5F79D /* AppDelegate.swift in Sources */,
 				1EF0E2BC2AECE85800B5F79D /* SceneDelegate.swift in Sources */,
 				1E3A1DEE2AF0101C0083A4CC /* ImportantViewController.swift in Sources */,
@@ -240,6 +255,7 @@
 				1E586DAD2B179D4C00CA1E00 /* UIView - Extension.swift in Sources */,
 				1EF0E2D02AED664A00B5F79D /* HabbitsViewController.swift in Sources */,
 				1E3A1DEA2AF00A7C0083A4CC /* CallingViewController.swift in Sources */,
+				1E38152D2B238A58007EA57E /* UILabel - Extension.swift in Sources */,
 				1E3A1DF02AF013BD0083A4CC /* TaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

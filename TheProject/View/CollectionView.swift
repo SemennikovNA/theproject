@@ -31,6 +31,7 @@ class CollectionView: UICollectionView {
     }
     
     private func setupCell() {
+        backgroundColor = .white
         delegate = self
         dataSource = self
         register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.reuseID)
@@ -44,10 +45,14 @@ extension CollectionView: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseID, for: indexPath)
-        
+        let cell = dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseID, for: indexPath) as! CustomCollectionViewCell
+        cell.textLabel.text = self.collect[indexPath.row].title
+        cell.backgroundColor = .black
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 320, height: 140)
+    }
     
 }

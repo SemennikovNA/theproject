@@ -8,6 +8,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     let mainView = MainView()
+    let collection = CollectionView()
     
     //MARK: - Life cycle
     
@@ -23,7 +24,7 @@ class MainViewController: UIViewController {
         
         // Configure view
         view.backgroundColor = .back
-        view.addSubviews(mainView)
+        view.addSubviews(mainView, collection)
         
         // Configure navigation controller
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -90,7 +91,12 @@ extension MainViewController {
             mainView.topAnchor.constraint(equalTo: view.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            collection.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 300),
+            collection.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
+            collection.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
+            collection.heightAnchor.constraint(equalToConstant: 150)
         ])
     }
 }

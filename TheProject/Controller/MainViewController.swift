@@ -7,8 +7,20 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    //MARK: - UI Elements
+    
     let mainView = MainView()
     let collection = CollectionView()
+    
+    //MARK: - Properties
+    
+    let collect = [
+        CollectionSet(title: "Задачи 📋", view: TaskViewController()),
+        CollectionSet(title: "Важное ‼️", view: ImportantViewController()),
+        CollectionSet(title: "Встречи 🤝🏽", view: MeetingViewController()),
+        CollectionSet(title: "Созвоны 📱", view: CallingViewController()),
+        CollectionSet(title: "Привычки 🛠️", view: HabbitsViewController())
+    ]
     
     //MARK: - Life cycle
     
@@ -17,8 +29,11 @@ class MainViewController: UIViewController {
         
         // Call functions
         setupView()
+        signatureDelegates()
         setupConstraints()
     }
+    
+    //MARK: - Private methods
     
     private func setupView() {
         
@@ -35,12 +50,18 @@ class MainViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(navigationButtonTapped))
         self.navigationItem.rightBarButtonItem?.tintColor = .dynamicText
         
-        // Add target's
+        // Collection view
+        collection.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         mainView.taskButton.addTarget(self, action: #selector(taskButtonTapped), for: .touchUpInside)
         mainView.importantButton.addTarget(self, action: #selector(importantButtonTapped), for: .touchUpInside)
         mainView.meetingButton.addTarget(self, action: #selector(meetingButtonTapped), for: .touchUpInside)
         mainView.callingButton.addTarget(self, action: #selector(callingButtonTapped), for: .touchUpInside)
         mainView.habbitsButton.addTarget(self, action: #selector(habbitsButtonTapped), for: .touchUpInside)
+    }
+    
+    private func signatureDelegates() {
+        collection.delegate = self
+        collection.dataSource = self
     }
 
 
@@ -81,6 +102,11 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
     
+    enum Constans {
+        static let collectionHeight: CGFloat = 70
+        static let topInsets: CGFloat = 300
+    }
+    
     func setupConstraints() {
         
         mainView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,10 +119,28 @@ extension MainViewController {
             mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            collection.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 300),
+            collection.topAnchor.constraint(equalTo: mainView.topAnchor, constant: Constans.topInsets),
             collection.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
             collection.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
-            collection.heightAnchor.constraint(equalToConstant: 150)
+            collection.heightAnchor.constraint(equalToConstant: Constans.collectionHeight)
         ])
     }
+}
+
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collect.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collection.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseID, for: indexPath) as! CustomCollectionViewCell
+        cell.textLabel.text = collect[indexPath.row].title
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 140, height: 55)
+    }
+    
 }

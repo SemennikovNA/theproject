@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E05301C2B374163000A0E70 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E05301B2B374163000A0E70 /* LoginView.swift */; };
+		1E05301E2B374175000A0E70 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E05301D2B374175000A0E70 /* LoginViewController.swift */; };
+		1E0530212B374B92000A0E70 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0530202B374B92000A0E70 /* CustomLabel.swift */; };
+		1E0530232B374F3A000A0E70 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0530222B374F3A000A0E70 /* CustomTextField.swift */; };
 		1E3815272B2384BA007EA57E /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3815262B2384BA007EA57E /* CollectionView.swift */; };
 		1E3815292B23859C007EA57E /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3815282B23859C007EA57E /* CustomCollectionViewCell.swift */; };
 		1E38152B2B2388B1007EA57E /* CollectionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38152A2B2388B1007EA57E /* CollectionSet.swift */; };
@@ -33,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E05301B2B374163000A0E70 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1E05301D2B374175000A0E70 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1E0530202B374B92000A0E70 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		1E0530222B374F3A000A0E70 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		1E3815262B2384BA007EA57E /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		1E3815282B23859C007EA57E /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		1E38152A2B2388B1007EA57E /* CollectionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSet.swift; sourceTree = "<group>"; };
@@ -71,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E05301F2B374B79000A0E70 /* Custom elements */ = {
+			isa = PBXGroup;
+			children = (
+				1E0530202B374B92000A0E70 /* CustomLabel.swift */,
+				1E0530222B374F3A000A0E70 /* CustomTextField.swift */,
+			);
+			path = "Custom elements";
+			sourceTree = "<group>";
+		};
 		1E586DA22B166BCC00CA1E00 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +97,7 @@
 				1E586DAE2B17C29A00CA1E00 /* AddedView.swift */,
 				1E3815262B2384BA007EA57E /* CollectionView.swift */,
 				1E3815282B23859C007EA57E /* CustomCollectionViewCell.swift */,
+				1E05301B2B374163000A0E70 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -104,6 +122,7 @@
 				1EF0E2CD2AED01C400B5F79D /* SettingViewController.swift */,
 				1E3A1DEF2AF013BD0083A4CC /* TaskViewController.swift */,
 				1E586DB22B17C90300CA1E00 /* AddedViewController.swift */,
+				1E05301D2B374175000A0E70 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -156,6 +175,7 @@
 		1EF0E2B82AECE85800B5F79D /* TheProject */ = {
 			isa = PBXGroup;
 			children = (
+				1E05301F2B374B79000A0E70 /* Custom elements */,
 				1E586DAB2B179D3300CA1E00 /* Extension */,
 				1E586DA62B166CBD00CA1E00 /* Support */,
 				1E586DA52B166C1200CA1E00 /* Aplication */,
@@ -235,10 +255,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E0530232B374F3A000A0E70 /* CustomTextField.swift in Sources */,
 				1EF0E2BE2AECE85800B5F79D /* MainViewController.swift in Sources */,
+				1E0530212B374B92000A0E70 /* CustomLabel.swift in Sources */,
 				1E586DB52B1A40FC00CA1E00 /* UIButton - Extension.swift in Sources */,
 				1E586DAA2B16825400CA1E00 /* TableView.swift in Sources */,
 				1E586DB12B17C65C00CA1E00 /* UIStackView - Extension.swift in Sources */,
+				1E05301C2B374163000A0E70 /* LoginView.swift in Sources */,
 				1E586DB72B1A5DD900CA1E00 /* Tasks.swift in Sources */,
 				1E38152B2B2388B1007EA57E /* CollectionSet.swift in Sources */,
 				1EF0E2CE2AED01C400B5F79D /* SettingViewController.swift in Sources */,
@@ -246,6 +269,7 @@
 				1E586DA82B16735100CA1E00 /* MainView.swift in Sources */,
 				1E586DB32B17C90300CA1E00 /* AddedViewController.swift in Sources */,
 				1E3A1DEC2AF00D840083A4CC /* MeetingViewController.swift in Sources */,
+				1E05301E2B374175000A0E70 /* LoginViewController.swift in Sources */,
 				1E586DAF2B17C29A00CA1E00 /* AddedView.swift in Sources */,
 				1E3815292B23859C007EA57E /* CustomCollectionViewCell.swift in Sources */,
 				1EF0E2BA2AECE85800B5F79D /* AppDelegate.swift in Sources */,

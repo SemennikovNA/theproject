@@ -15,7 +15,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI elements
     
-    let textLabel = UILabel()
+    let textLabel = UILabel(text: nil, font: .systemFont(ofSize: 20), textColor: .dynamicText)
     
     //MARK: - Inititalize
     
@@ -35,6 +35,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     private func setupCell() {
         contentView.addSubviews(textLabel)
+        contentView.layer.borderColor = UIColor.black.cgColor
+        contentView.layer.borderWidth = 1
+        contentView.layer.cornerRadius = 15
     }
 }
 

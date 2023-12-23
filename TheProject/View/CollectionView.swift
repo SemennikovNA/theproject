@@ -9,14 +9,6 @@ import UIKit
 
 class CollectionView: UICollectionView {
     
-    let collect = [
-        CollectionSet(title: "Задачи 📋", view: TaskViewController()),
-        CollectionSet(title: "Важное ‼️", view: ImportantViewController()),
-        CollectionSet(title: "Встречи 🤝🏽", view: MeetingViewController()),
-        CollectionSet(title: "Созвоны 📱", view: CallingViewController()),
-        CollectionSet(title: "Привычки 🛠️", view: HabbitsViewController())
-    ]
-    
     //MARK: - Initialize
     
     init() {
@@ -32,27 +24,7 @@ class CollectionView: UICollectionView {
     
     private func setupCell() {
         backgroundColor = .white
-        delegate = self
-        dataSource = self
         register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.reuseID)
+        showsHorizontalScrollIndicator = false
     }
-}
-
-extension CollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        collect.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseID, for: indexPath) as! CustomCollectionViewCell
-        cell.textLabel.text = self.collect[indexPath.row].title
-        cell.backgroundColor = .black
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 320, height: 140)
-    }
-    
 }

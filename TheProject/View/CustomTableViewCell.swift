@@ -43,8 +43,7 @@ class CustomTableViewCell: UITableViewCell {
     //MARK: - Private methods
     
     private func setCellElements() {
-        contentView.addSubviews(taskLabel)
-        contentView.addSubviews(descriptionLabel)
+        contentView.addSubviews(taskLabel, descriptionLabel)
         
         NSLayoutConstraint.activate([
             

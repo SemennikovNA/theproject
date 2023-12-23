@@ -12,10 +12,11 @@ class CustomTextField: UIView {
     let fieldView = UIView()
     let textField = UITextField()
     
-    init(placeholder: String?) {
+    init(placeholder: String?, textColor: UIColor?) {
         super.init(frame: .zero)
         self.textField.placeholder = placeholder
-        self.textField.attributedPlaceholder = NSAttributedString(string: placeholder!, attributes: [NSAttributedString.Key.foregroundColor : UIColor.dynamicText])
+        self.textField.textColor = textColor
+        self.textField.attributedPlaceholder = NSAttributedString(string: placeholder!, attributes: [NSAttributedString.Key.foregroundColor : textColor!])
         
         // Call function's
         setupElements()

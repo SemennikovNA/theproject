@@ -11,11 +11,11 @@ class CustomLabel: UILabel {
     
     let textLabel = UILabel()
     
-    init(text: String?, font: UIFont?, color: UIColor?) {
-        super.init(frame: .zero)
+    init(text: String?, font: UIFont?, color: UIColor? = .white) {
+        super.init(frame: .infinite)
         self.textLabel.text = text
         self.textLabel.font = font
-        self.textColor = color
+        self.textLabel.textColor = color
         
         // Call function's
         setupElements()

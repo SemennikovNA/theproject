@@ -7,18 +7,13 @@
 
 import UIKit
 
-enum FontCase: String {
-    
-    case normal = "systemFont"
-    case bold = "boldSystemFont"
-}
-
 extension UIButton {
     
-    convenience init(title: String? = nil, titleColor: UIColor? = nil, backgroundColor: UIColor? = nil, cornerRadius: CGFloat? = 0, borderWidth: CGFloat? = nil, borderColor: UIColor? = nil, image: String? = nil, fontSize: CGFloat? = nil, font: FontCase?) {
+    convenience init(title: String? = nil, titleColor: UIColor? = nil, backgroundColor: UIColor? = nil, cornerRadius: CGFloat? = 0, borderWidth: CGFloat? = nil, borderColor: UIColor? = nil, image: String? = nil, font: UIFont? = .boldSystemFont(ofSize: 13)) {
         self.init(type: .system)
         self.frame = .infinite
         self.tintColor = .white
+        self.titleLabel?.font = font
         
         if let title = title {
             self.setTitle(title, for: .normal)
@@ -47,14 +42,6 @@ extension UIButton {
         if let image = image {
             let uiImage = UIImage(named: image)?.withRenderingMode(.alwaysOriginal)
             self.setImage(uiImage, for: .normal)
-        }
-        
-        if let fontSize = fontSize {
-            self.titleLabel?.font = UIFont(name: "", size: fontSize)
-        }
-        
-        if let font = font {
-            self.titleLabel?.font = UIFont(name: font.rawValue, size: fontSize!)
         }
     }
 }

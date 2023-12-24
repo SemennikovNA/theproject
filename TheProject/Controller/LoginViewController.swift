@@ -13,9 +13,10 @@ class LoginViewController: UIViewController {
     //MARK: - UI Elements
     
     let gifImageView: LottieAnimationView = {
-        let animation = LottieAnimationView(name: "ani")
-        animation.loopMode = .repeat(15)
+        let animation = LottieAnimationView(name: "task")
+        animation.loopMode = .loop
         animation.play()
+        animation.contentMode = .scaleAspectFill
         return animation
     }()
     
@@ -28,6 +29,7 @@ class LoginViewController: UIViewController {
     
         // Call function's
         setupView()
+        signatureDelegates()
         setupConstraints()
     }
     
@@ -47,23 +49,44 @@ class LoginViewController: UIViewController {
         self.navigationItem.title = "Log in"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
+        
+        // Add tergets for button
+        loginView.googleAuthAddTargets(target: self, action: #selector(googleButtonTapped))
+        loginView.appleAuthAddTargets(target: self, action: #selector(appleButtonTapped))
+    }
+    
+    private func signatureDelegates() {
+        loginView.emailTextField.textField.delegate = self
+        loginView.passwordTextField.textField.delegate = self
+    }
+    
+    //MARK: - Objective-C methods
+    
+    @objc func googleButtonTapped() {
+        print("Google")
+    }
+    
+    @objc func appleButtonTapped() {
+        print("Apple")
     }
 }
+
+//MARK: - Extension
 
 extension LoginViewController {
     
     enum Constans {
         static let tenPoints: CGFloat = 10
         static let twentyPoints: CGFloat = 20
-        static let gifImageWidth: CGFloat = 200
-        static let gifImageHeight: CGFloat = 150
+        static let gifImageWidth: CGFloat = 100
+        static let gifImageHeight: CGFloat = 80
     }
     
     func setupConstraints() {
         
         NSLayoutConstraint.activate([
             // Gif image view
-            gifImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constans.tenPoints),
+            gifImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -Constans.twentyPoints),
             gifImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gifImageView.heightAnchor.constraint(equalToConstant: Constans.gifImageHeight),
             gifImageView.widthAnchor.constraint(equalToConstant: Constans.gifImageWidth),
@@ -74,5 +97,15 @@ extension LoginViewController {
             loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+}
+
+//MARK: Text field delegate methods
+
+extension LoginViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
     }
 }

@@ -65,11 +65,11 @@ class MainView: UIView {
     //        habbitsButton.addTarget(self, action: #selector(habbitsButtonTapped), for: .touchUpInside)
     
     private func setupView() {
-        taskButton = UIButton(title: "Задачи 📋", titleColor: .dynamicText, backgroundColor: .task, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, fontSize: 20, font: .bold)
-        importantButton = UIButton(title: "Важное ‼️", titleColor: .dynamicText, backgroundColor: .important, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, fontSize: 20, font: .bold)
-        meetingButton = UIButton(title: "Встречи 🤝🏽", titleColor: .dynamicText, backgroundColor: .meeting, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, fontSize: 20, font: .bold)
-        callingButton = UIButton(title: "Созвоны 📱", titleColor: .dynamicText, backgroundColor: .calling, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, fontSize: 20, font: .bold)
-        habbitsButton = UIButton(title: "Привычки 🛠️", titleColor: .dynamicText, backgroundColor: .habbits, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, fontSize: 20, font: .bold)
+        taskButton = UIButton(title: "Задачи 📋", titleColor: .dynamicText, backgroundColor: .task, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, font: .boldSystemFont(ofSize: 20))
+        importantButton = UIButton(title: "Важное ‼️", titleColor: .dynamicText, backgroundColor: .important, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, font: .boldSystemFont(ofSize: 20))
+        meetingButton = UIButton(title: "Встречи 🤝🏽", titleColor: .dynamicText, backgroundColor: .meeting, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, font: .boldSystemFont(ofSize: 20))
+        callingButton = UIButton(title: "Созвоны 📱", titleColor: .dynamicText, backgroundColor: .calling, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, font: .boldSystemFont(ofSize: 20))
+        habbitsButton = UIButton(title: "Привычки 🛠️", titleColor: .dynamicText, backgroundColor: .habbits, cornerRadius: 15, borderWidth: 1, borderColor: .black, image: nil, font: .boldSystemFont(ofSize: 20))
         self.addSubviews(infoLabel, horizontalScroll)
         horizontalScroll.addSubviews(taskButton, importantButton, meetingButton, callingButton, habbitsButton)
     }

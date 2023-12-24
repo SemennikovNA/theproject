@@ -75,7 +75,7 @@ class AddedView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addedButton = UIButton(title: "Добавить", titleColor: .dynamicText, backgroundColor: .systemGreen, cornerRadius: 20, borderWidth: nil, borderColor: nil, image: nil, fontSize: 20, font: .bold)
+        self.addedButton = UIButton(title: "Добавить", titleColor: .dynamicText, backgroundColor: .systemGreen, cornerRadius: 20, borderWidth: nil, borderColor: nil, image: nil)
         
         // Call function's
         setupView()

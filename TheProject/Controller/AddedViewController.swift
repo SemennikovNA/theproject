@@ -43,6 +43,7 @@ class AddedViewController: UIViewController {
         taskVC.modalTransitionStyle = .flipHorizontal
         guard let task = addedView.taskTextField.text else { return }
         guard let description = addedView.descriptionTextField.text else { return }
+        print(task, description)
     }
 }
 

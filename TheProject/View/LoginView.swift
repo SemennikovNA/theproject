@@ -11,10 +11,10 @@ class LoginView: UIView {
     
     //MARK: - UI Elements
     // Label's
-    let emailLabel = CustomLabel(text: "E-mail", font: .boldSystemFont(ofSize: 15))
-    let passwordLabel = CustomLabel(text: "Password", font: .boldSystemFont(ofSize: 15))
-    let singUpLabel = CustomLabel(text: "Sign up with", font: .boldSystemFont(ofSize: 15), color: .gray)
-    let newHereLabel = CustomLabel(text: "New Here?", font: .systemFont(ofSize: 18), color: .gray)
+    private lazy var emailLabel = CustomLabel(text: "E-mail", font: .boldSystemFont(ofSize: 15))
+    private lazy var passwordLabel = CustomLabel(text: "Password", font: .boldSystemFont(ofSize: 15))
+    private lazy var singUpLabel = CustomLabel(text: "Sign up with", font: .boldSystemFont(ofSize: 15), color: .gray)
+    private lazy var newHereLabel = CustomLabel(text: "New Here?", font: .systemFont(ofSize: 18), color: .gray)
     // Text field's
     let emailTextField = CustomTextField(placeholder: "Enter email", textColor: .white)
     let passwordTextField = CustomTextField(placeholder: "Enter password", textColor: .white)
@@ -25,8 +25,8 @@ class LoginView: UIView {
     let googleAuth = UIButton(title: "Sign in with Google", titleColor: .black, backgroundColor: .white, image: "goo", font: .boldSystemFont(ofSize: 14))
     let appleAuth = UIButton(title: "Sign in with Apple", titleColor: .black, backgroundColor: .white, image: "app", font: .boldSystemFont(ofSize: 14))
     // View's
-    let firstSeparatorView = UIView(color: .gray)
-    let secondSeparatorView = UIView(color: .gray)
+    private lazy var firstSeparatorView = UIView(color: .gray)
+    private lazy var secondSeparatorView = UIView(color: .gray)
     
     //MARK: - Life cycle
     
@@ -40,6 +40,15 @@ class LoginView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        
+        emailTextField.layer.cornerRadius = emailTextField.frame.width / 20
+        passwordTextField.layer.cornerRadius = passwordTextField.frame.width / 20
+        googleAuth.layer.cornerRadius = googleAuth.frame.width / 15
+        appleAuth.layer.cornerRadius = appleAuth.frame.width / 15
     }
     
     //MARK: - Private methods
@@ -63,24 +72,30 @@ class LoginView: UIView {
                          appleAuth
         )
         
+       setupUIElements()
+    }
+    
+    //MARK: - Private methods
+    
+    private func setupUIElements() {
         // Setup Email text field
-        emailTextField.layer.cornerRadius = 10
+        emailTextField.textField.tintColor = .white
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor.white.cgColor
         emailTextField.textField.keyboardType = .emailAddress
         
         // Setup Password text field
-        passwordTextField.layer.cornerRadius = 10
+        passwordTextField.textField.tintColor = .white
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.borderColor = UIColor.white.cgColor
         passwordTextField.textField.isSecureTextEntry = true
-        
-        // Auth button
-        googleAuth.layer.cornerRadius = 10
-        appleAuth.layer.cornerRadius = 10
     }
     
-    //MARK: - Methods
+    //MARK: - Open methods
+    
+    func loginAddTargets(target: Any, action: Selector) {
+        loginButton.addTarget(target, action: action, for: .touchUpInside)
+    }
     
     func googleAuthAddTargets(target: Any, action: Selector) {
         googleAuth.addTarget(target, action: action, for: .touchUpInside)
@@ -93,7 +108,7 @@ class LoginView: UIView {
 
 //MARK: - Extension
 
-extension LoginView {
+private extension LoginView {
     
     enum Constans {
         static let fivePoints: CGFloat = 5

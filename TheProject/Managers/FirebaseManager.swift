@@ -5,7 +5,7 @@
 //  Created by Nikita on 20.01.2024.
 //
 
-import Foundation
+import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
@@ -16,20 +16,35 @@ class FirebaseManager {
     static let shared = FirebaseManager()
     
     let id = Auth.auth().currentUser?.uid
+    let auth = Auth.auth()
     
     //MARK: - Methods
     // Sign in method
     
     func login(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            guard let error else {
-                print(String(describing: error?.localizedDescription))
-                return
+        
+        auth.signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                print("Ошибка при входе: \(error.localizedDescription)")
+            } else {
+                if let navigationController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController {
+                    let taskVC = TaskViewController()
+                    navigationController.pushViewController(taskVC, animated: true)
+                }
+                print("Пользователь успешно вошел: \(authResult?.user.uid ?? "")")
             }
         }
     }
     
     func logout() {
-        
+        do {
+            try
+            auth.signOut()
+            let loginVC = LoginViewController()
+            let navVC = UINavigationController()
+            navVC.popToViewController(loginVC, animated: true)
+        } catch {
+            print("Exit error")
+        }
     }
 }

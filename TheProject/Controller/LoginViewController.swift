@@ -22,15 +22,24 @@ class LoginViewController: UIViewController {
     
     let loginView = LoginView()
     
+    //MARK: - Properties
+    
+    let firebaseManager = FirebaseManager()
+    
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         // Call function's
         setupView()
         signatureDelegates()
         setupConstraints()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        loginView.layoutIfNeeded()
     }
     
     //MARK: - Private func
@@ -51,6 +60,8 @@ class LoginViewController: UIViewController {
         self.navigationItem.largeTitleDisplayMode = .always
         
         // Add tergets for button
+        
+        loginView.loginAddTargets(target: self, action: #selector(loginButtonTapped))
         loginView.googleAuthAddTargets(target: self, action: #selector(googleButtonTapped))
         loginView.appleAuthAddTargets(target: self, action: #selector(appleButtonTapped))
     }
@@ -61,6 +72,12 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: - Objective-C methods
+    
+    @objc func loginButtonTapped() {
+        guard let email = loginView.emailTextField.textField.text, 
+                let password = loginView.passwordTextField.textField.text else { return }
+        firebaseManager.login(email: email, password: password)
+    }
     
     @objc func googleButtonTapped() {
         print("Google")
@@ -103,7 +120,7 @@ extension LoginViewController {
 //MARK: Text field delegate methods
 
 extension LoginViewController: UITextFieldDelegate {
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true

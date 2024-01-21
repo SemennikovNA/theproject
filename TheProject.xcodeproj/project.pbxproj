@@ -63,6 +63,8 @@
 		1EFBD5032B5C394800017574 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1EFBD5022B5C394800017574 /* FirebaseRemoteConfigSwift */; };
 		1EFBD5052B5C394800017574 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1EFBD5042B5C394800017574 /* FirebaseStorage */; };
 		1EFBD5072B5C394800017574 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1EFBD5062B5C394800017574 /* FirebaseStorageCombine-Community */; };
+		1EFBD5092B5D5BCA00017574 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EFBD5082B5D5BCA00017574 /* GoogleService-Info.plist */; };
+		1EFBD50C2B5D5C4900017574 /* task.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EFBD50B2B5D5C4900017574 /* task.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,8 @@
 		1EF0E2CD2AED01C400B5F79D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1EF0E2CF2AED664A00B5F79D /* HabbitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitsViewController.swift; sourceTree = "<group>"; };
 		1EFBD4D02B5C389200017574 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		1EFBD5082B5D5BCA00017574 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1EFBD50B2B5D5C4900017574 /* task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = task.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +201,8 @@
 		1E586DA62B166CBD00CA1E00 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				1EFBD50A2B5D5BE100017574 /* Animations */,
+				1EFBD5082B5D5BCA00017574 /* GoogleService-Info.plist */,
 				1EF0E2C22AECE85B00B5F79D /* Assets.xcassets */,
 				1EF0E2C72AECE85B00B5F79D /* Info.plist */,
 			);
@@ -251,6 +257,14 @@
 				1EFBD4D02B5C389200017574 /* FirebaseManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		1EFBD50A2B5D5BE100017574 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				1EFBD50B2B5D5C4900017574 /* task.json */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +360,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EF0E2C32AECE85B00B5F79D /* Assets.xcassets in Resources */,
+				1EFBD5092B5D5BCA00017574 /* GoogleService-Info.plist in Resources */,
+				1EFBD50C2B5D5C4900017574 /* task.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

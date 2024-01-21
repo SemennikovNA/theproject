@@ -20,6 +20,7 @@ class TaskViewController: UIViewController {
         Tasks(task: "Звонок", description: "Позвонить бабушке"),
         Tasks(task: "Поцелуй", description: "Поцеловать Зарифу")
     ]
+    let firebaseManager = FirebaseManager()
     
     //MARK: - Life cycle
     
@@ -61,10 +62,12 @@ class TaskViewController: UIViewController {
     
     @objc func addedButtonTapped() {
         
-        let addedVC = AddedViewController()
-        addedVC.modalTransitionStyle = .flipHorizontal
-        addedVC.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(addedVC, animated: true)
+//        let addedVC = AddedViewController()
+//        addedVC.modalTransitionStyle = .flipHorizontal
+//        addedVC.modalPresentationStyle = .fullScreen
+//        navigationController?.pushViewController(addedVC, animated: true)
+        
+        firebaseManager.logout()
     }
 }
 

@@ -64,7 +64,10 @@
 		1EFBD5052B5C394800017574 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1EFBD5042B5C394800017574 /* FirebaseStorage */; };
 		1EFBD5072B5C394800017574 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1EFBD5062B5C394800017574 /* FirebaseStorageCombine-Community */; };
 		1EFBD5092B5D5BCA00017574 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EFBD5082B5D5BCA00017574 /* GoogleService-Info.plist */; };
-		1EFBD50C2B5D5C4900017574 /* task.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EFBD50B2B5D5C4900017574 /* task.json */; };
+		1EFBD50F2B5DAF2C00017574 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFBD50E2B5DAF2C00017574 /* RegistrationView.swift */; };
+		1EFBD5112B5DB05900017574 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFBD5102B5DB05900017574 /* RegistrationViewController.swift */; };
+		1EFBD5142B5DB46D00017574 /* registr.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EFBD5122B5DB46D00017574 /* registr.json */; };
+		1EFBD5152B5DB46D00017574 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EFBD5132B5DB46D00017574 /* login.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,7 +102,10 @@
 		1EF0E2CF2AED664A00B5F79D /* HabbitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitsViewController.swift; sourceTree = "<group>"; };
 		1EFBD4D02B5C389200017574 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		1EFBD5082B5D5BCA00017574 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1EFBD50B2B5D5C4900017574 /* task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = task.json; sourceTree = "<group>"; };
+		1EFBD50E2B5DAF2C00017574 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		1EFBD5102B5DB05900017574 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		1EFBD5122B5DB46D00017574 /* registr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = registr.json; sourceTree = "<group>"; };
+		1EFBD5132B5DB46D00017574 /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,7 @@
 				1E3815262B2384BA007EA57E /* CollectionView.swift */,
 				1E3815282B23859C007EA57E /* CustomCollectionViewCell.swift */,
 				1E05301B2B374163000A0E70 /* LoginView.swift */,
+				1EFBD50E2B5DAF2C00017574 /* RegistrationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +192,7 @@
 				1E3A1DEF2AF013BD0083A4CC /* TaskViewController.swift */,
 				1E586DB22B17C90300CA1E00 /* AddedViewController.swift */,
 				1E05301D2B374175000A0E70 /* LoginViewController.swift */,
+				1EFBD5102B5DB05900017574 /* RegistrationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -262,7 +270,8 @@
 		1EFBD50A2B5D5BE100017574 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				1EFBD50B2B5D5C4900017574 /* task.json */,
+				1EFBD5132B5DB46D00017574 /* login.json */,
+				1EFBD5122B5DB46D00017574 /* registr.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -360,8 +369,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EF0E2C32AECE85B00B5F79D /* Assets.xcassets in Resources */,
+				1EFBD5142B5DB46D00017574 /* registr.json in Resources */,
 				1EFBD5092B5D5BCA00017574 /* GoogleService-Info.plist in Resources */,
-				1EFBD50C2B5D5C4900017574 /* task.json in Resources */,
+				1EFBD5152B5DB46D00017574 /* login.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +385,7 @@
 				1E0530232B374F3A000A0E70 /* CustomTextField.swift in Sources */,
 				1EF0E2BE2AECE85800B5F79D /* MainViewController.swift in Sources */,
 				1E0530212B374B92000A0E70 /* CustomLabel.swift in Sources */,
+				1EFBD50F2B5DAF2C00017574 /* RegistrationView.swift in Sources */,
 				1EFBD4D12B5C389200017574 /* FirebaseManager.swift in Sources */,
 				1E586DB52B1A40FC00CA1E00 /* UIButton - Extension.swift in Sources */,
 				1E586DAA2B16825400CA1E00 /* TableView.swift in Sources */,
@@ -399,6 +410,7 @@
 				1E3A1DEA2AF00A7C0083A4CC /* CallingViewController.swift in Sources */,
 				1E38152D2B238A58007EA57E /* UILabel - Extension.swift in Sources */,
 				1E3A1DF02AF013BD0083A4CC /* TaskViewController.swift in Sources */,
+				1EFBD5112B5DB05900017574 /* RegistrationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

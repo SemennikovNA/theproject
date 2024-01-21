@@ -20,10 +20,10 @@ class LoginView: UIView {
     let passwordTextField = CustomTextField(placeholder: "Enter password", textColor: .white)
     // Button's
     let forgetPasswordButton = UIButton(title: "Forget password", titleColor: .white, font: .boldSystemFont(ofSize: 14))
-    let loginButton = UIButton(title: "LOG IN", titleColor: .black, backgroundColor: .white, cornerRadius: 20, font: .boldSystemFont(ofSize: 25))
-    let createAccountButton = UIButton(title: "Create Account", titleColor: .white, font: .boldSystemFont(ofSize: 18))
-    let googleAuth = UIButton(title: "Sign in with Google", titleColor: .black, backgroundColor: .white, image: "goo", font: .boldSystemFont(ofSize: 14))
-    let appleAuth = UIButton(title: "Sign in with Apple", titleColor: .black, backgroundColor: .white, image: "app", font: .boldSystemFont(ofSize: 14))
+    private lazy var loginButton = UIButton(title: "LOG IN", titleColor: .black, backgroundColor: .white, cornerRadius: 20, font: .boldSystemFont(ofSize: 25))
+    private lazy var createAccountButton = UIButton(title: "Create Account", titleColor: .white, font: .boldSystemFont(ofSize: 18))
+    private lazy var googleAuth = UIButton(title: "Sign in with Google", titleColor: .black, backgroundColor: .white, image: "goo", font: .boldSystemFont(ofSize: 14))
+    private lazy var appleAuth = UIButton(title: "Sign in with Apple", titleColor: .black, backgroundColor: .white, image: "app", font: .boldSystemFont(ofSize: 14))
     // View's
     private lazy var firstSeparatorView = UIView(color: .gray)
     private lazy var secondSeparatorView = UIView(color: .gray)
@@ -95,6 +95,10 @@ class LoginView: UIView {
     
     func loginAddTargets(target: Any, action: Selector) {
         loginButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func createAccountAddTargets(target: Any, action: Selector) {
+        createAccountButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
     func googleAuthAddTargets(target: Any, action: Selector) {
@@ -213,8 +217,4 @@ private extension LoginView {
         
         ])
     }
-}
-
-#Preview() {
-    LoginViewController()
 }

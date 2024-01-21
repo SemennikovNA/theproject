@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     //MARK: - UI Elements
     
     let gifImageView: LottieAnimationView = {
-        let animation = LottieAnimationView(name: "task")
+        let animation = LottieAnimationView(name: "login")
         animation.loopMode = .loop
         animation.play()
         animation.contentMode = .scaleAspectFill
@@ -42,33 +42,40 @@ class LoginViewController: UIViewController {
         loginView.layoutIfNeeded()
     }
     
-    //MARK: - Private func
+    //MARK: - Private method
+    
+    private func signatureDelegates() {
+        loginView.emailTextField.textField.delegate = self
+        loginView.passwordTextField.textField.delegate = self
+    }
     
     private func setupView() {
         // Setup view
         view.backgroundColor = .white
         view.addSubviews(gifImageView, loginView)
         
+        // Setup navigation bar
+        self.navigationItem.title = "Log in"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.tintColor = .black
+        
+        // Call method's
+        setupLoginView()
+    }
+    
+    
+    private func setupLoginView() {
         // Setup login view
         loginView.layer.cornerRadius = 20
         loginView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         loginView.layer.masksToBounds = true
         
-        // Setup navigation bar
-        self.navigationItem.title = "Log in"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
-        
         // Add tergets for button
-        
         loginView.loginAddTargets(target: self, action: #selector(loginButtonTapped))
+        loginView.createAccountAddTargets(target: self, action: #selector(createAccountButtonTapped))
         loginView.googleAuthAddTargets(target: self, action: #selector(googleButtonTapped))
         loginView.appleAuthAddTargets(target: self, action: #selector(appleButtonTapped))
-    }
-    
-    private func signatureDelegates() {
-        loginView.emailTextField.textField.delegate = self
-        loginView.passwordTextField.textField.delegate = self
     }
     
     //MARK: - Objective-C methods
@@ -77,6 +84,13 @@ class LoginViewController: UIViewController {
         guard let email = loginView.emailTextField.textField.text, 
                 let password = loginView.passwordTextField.textField.text else { return }
         firebaseManager.login(email: email, password: password)
+    }
+    
+    @objc func createAccountButtonTapped() {
+         let registrVC = RegistrationViewController()
+        registrVC.modalPresentationStyle = .fullScreen
+        registrVC.modalTransitionStyle = .flipHorizontal
+        navigationController?.pushViewController(registrVC, animated: true)
     }
     
     @objc func googleButtonTapped() {
@@ -95,7 +109,7 @@ extension LoginViewController {
     enum Constans {
         static let tenPoints: CGFloat = 10
         static let twentyPoints: CGFloat = 20
-        static let gifImageWidth: CGFloat = 100
+        static let gifImageWidth: CGFloat = 200
         static let gifImageHeight: CGFloat = 80
     }
     

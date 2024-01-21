@@ -33,7 +33,6 @@ class FirebaseManager {
                     let taskVC = TaskViewController()
                     navigationController.pushViewController(taskVC, animated: true)
                 }
-                
                 print("Пользователь успешно вошел: \(authResult?.user.uid ?? "")")
             }
         }
@@ -41,6 +40,7 @@ class FirebaseManager {
     
     /// Logout method
     func logout() {
+        
         do {
             try auth.signOut()
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,

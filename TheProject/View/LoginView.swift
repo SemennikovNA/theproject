@@ -138,83 +138,82 @@ private extension LoginView {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            
-            // Google auth button
-            googleAuth.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constans.oneHundredPoints),
-            googleAuth.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constans.twentyPoints),
-            googleAuth.heightAnchor.constraint(equalToConstant: Constans.authButtonHeight),
-            googleAuth.widthAnchor.constraint(equalToConstant: Constans.authButtonWidth),
-            
-            // Apple auth button
-            appleAuth.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constans.oneHundredPoints),
-            appleAuth.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constans.twentyPoints),
-            appleAuth.heightAnchor.constraint(equalToConstant: Constans.authButtonHeight),
-            appleAuth.widthAnchor.constraint(equalToConstant: Constans.authButtonWidth),
-            
-            // Separator view
-            firstSeparatorView.bottomAnchor.constraint(equalTo: appleAuth.topAnchor, constant: -Constans.thirtyPoints),
-            firstSeparatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            firstSeparatorView.heightAnchor.constraint(equalToConstant: Constans.separatorHeight),
-            firstSeparatorView.widthAnchor.constraint(equalToConstant: Constans.separatorWidth),
-            secondSeparatorView.topAnchor.constraint(equalTo: googleAuth.topAnchor, constant: -Constans.thirtyPoints),
-            secondSeparatorView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            secondSeparatorView.heightAnchor.constraint(equalToConstant: Constans.separatorHeight),
-            secondSeparatorView.widthAnchor.constraint(equalToConstant: Constans.separatorWidth),
-            
-            // Sign up label
-            singUpLabel.bottomAnchor.constraint(equalTo: googleAuth.topAnchor, constant: -Constans.twentyPoints),
-            singUpLabel.heightAnchor.constraint(equalToConstant: Constans.twentyPoints),
-            singUpLabel.widthAnchor.constraint(equalToConstant: Constans.labelWidth),
-            singUpLabel.centerXAnchor.constraint(equalTo: createAccountButton.centerXAnchor),
-            
-            // Create account button
-            createAccountButton.bottomAnchor.constraint(equalTo: singUpLabel.topAnchor, constant: -Constans.twentyPoints),
-            createAccountButton.heightAnchor.constraint(equalToConstant: Constans.twentyPoints),
-            createAccountButton.widthAnchor.constraint(equalToConstant: Constans.createButtonWidth),
-            createAccountButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
-            // New here label
-            newHereLabel.bottomAnchor.constraint(equalTo: createAccountButton.topAnchor, constant: -Constans.tenPoints),
-            newHereLabel.heightAnchor.constraint(equalToConstant: Constans.labelHeight),
-            newHereLabel.widthAnchor.constraint(equalToConstant: Constans.labelWidth),
-            newHereLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
-            // Login button
-            loginButton.bottomAnchor.constraint(equalTo: newHereLabel.topAnchor, constant: -Constans.twentyPoints),
-            loginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            loginButton.heightAnchor.constraint(equalToConstant: Constans.loginButtonHeight),
-            loginButton.widthAnchor.constraint(equalToConstant: Constans.loginButtonWidth),
         
-            // Forget password button
-            forgetPasswordButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -Constans.thirtyPoints),
-            forgetPasswordButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constans.thirtyPoints),
-            forgetPasswordButton.heightAnchor.constraint(equalToConstant: Constans.labelHeight),
-            forgetPasswordButton.widthAnchor.constraint(equalToConstant: Constans.forgetPasswordButtonWidth),
-            
-            // Password text field
-            passwordTextField.bottomAnchor.constraint(equalTo: forgetPasswordButton.topAnchor, constant: -Constans.fivePoints),
-            passwordTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constans.thirtyPoints),
-            passwordTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constans.thirtyPoints),
-            passwordTextField.heightAnchor.constraint(equalToConstant: Constans.textFieldHeight),
-            
-            // Password label
-            passwordLabel.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -Constans.tenPoints),
-            passwordLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constans.thirtyPoints),
-            passwordLabel.heightAnchor.constraint(equalToConstant: Constans.labelHeight),
-            passwordLabel.widthAnchor.constraint(equalToConstant: Constans.labelWidth),
-
-            // Email text field
-            emailTextField.bottomAnchor.constraint(equalTo: passwordLabel.topAnchor, constant: -Constans.tenPoints),
-            emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constans.thirtyPoints),
-            emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constans.thirtyPoints),
-            emailTextField.heightAnchor.constraint(equalToConstant: Constans.textFieldHeight),
-            
             // Email label
             emailLabel.bottomAnchor.constraint(equalTo: self.topAnchor, constant: Constans.topInsets),
             emailLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constans.thirtyPoints),
             emailLabel.heightAnchor.constraint(equalToConstant: Constans.labelHeight),
             emailLabel.widthAnchor.constraint(equalToConstant: Constans.labelWidth),
+            
+            // Email text field
+            emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: Constans.tenPoints),
+            emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constans.thirtyPoints),
+            emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constans.thirtyPoints),
+            emailTextField.heightAnchor.constraint(equalToConstant: Constans.textFieldHeight),
+            
+            // Password label
+            passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: Constans.tenPoints),
+            passwordLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constans.thirtyPoints),
+            passwordLabel.heightAnchor.constraint(equalToConstant: Constans.labelHeight),
+            passwordLabel.widthAnchor.constraint(equalToConstant: Constans.labelWidth),
         
+            // Password text field
+            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: Constans.fivePoints),
+            passwordTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constans.thirtyPoints),
+            passwordTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constans.thirtyPoints),
+            passwordTextField.heightAnchor.constraint(equalToConstant: Constans.textFieldHeight),
+            
+            // Forget password button
+            forgetPasswordButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: Constans.thirtyPoints),
+            forgetPasswordButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constans.thirtyPoints),
+            forgetPasswordButton.heightAnchor.constraint(equalToConstant: Constans.labelHeight),
+            forgetPasswordButton.widthAnchor.constraint(equalToConstant: Constans.forgetPasswordButtonWidth),
+            
+            // Login button
+            loginButton.topAnchor.constraint(equalTo: forgetPasswordButton.bottomAnchor, constant: Constans.twentyPoints),
+            loginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            loginButton.heightAnchor.constraint(equalToConstant: Constans.loginButtonHeight),
+            loginButton.widthAnchor.constraint(equalToConstant: Constans.loginButtonWidth),
+            
+            // New here label
+            newHereLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: Constans.tenPoints),
+            newHereLabel.heightAnchor.constraint(equalToConstant: Constans.labelHeight),
+            newHereLabel.widthAnchor.constraint(equalToConstant: Constans.labelWidth),
+            newHereLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            
+            // Create account button
+            createAccountButton.topAnchor.constraint(equalTo: newHereLabel.bottomAnchor, constant: Constans.twentyPoints),
+            createAccountButton.heightAnchor.constraint(equalToConstant: Constans.twentyPoints),
+            createAccountButton.widthAnchor.constraint(equalToConstant: Constans.createButtonWidth),
+            createAccountButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            
+            // Sign up label
+            singUpLabel.topAnchor.constraint(equalTo: createAccountButton.bottomAnchor, constant: Constans.twentyPoints),
+            singUpLabel.heightAnchor.constraint(equalToConstant: Constans.twentyPoints),
+            singUpLabel.widthAnchor.constraint(equalToConstant: Constans.labelWidth),
+            singUpLabel.centerXAnchor.constraint(equalTo: createAccountButton.centerXAnchor),
+            
+            // Separator view
+            firstSeparatorView.topAnchor.constraint(equalTo: singUpLabel.topAnchor, constant: Constans.fivePoints),
+            firstSeparatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            firstSeparatorView.heightAnchor.constraint(equalToConstant: Constans.separatorHeight),
+            firstSeparatorView.widthAnchor.constraint(equalToConstant: Constans.separatorWidth),
+            secondSeparatorView.topAnchor.constraint(equalTo: singUpLabel.topAnchor, constant: Constans.fivePoints),
+            secondSeparatorView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            secondSeparatorView.heightAnchor.constraint(equalToConstant: Constans.separatorHeight),
+            secondSeparatorView.widthAnchor.constraint(equalToConstant: Constans.separatorWidth),
+            
+            // Google auth button
+            googleAuth.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -Constans.twentyPoints),
+            googleAuth.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constans.twentyPoints),
+            googleAuth.heightAnchor.constraint(equalToConstant: Constans.authButtonHeight),
+            googleAuth.widthAnchor.constraint(equalToConstant: Constans.authButtonWidth),
+            
+            // Apple auth button
+            appleAuth.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -Constans.twentyPoints),
+            appleAuth.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constans.twentyPoints),
+            appleAuth.heightAnchor.constraint(equalToConstant: Constans.authButtonHeight),
+            appleAuth.widthAnchor.constraint(equalToConstant: Constans.authButtonWidth),
         ])
     }
 }

@@ -55,7 +55,9 @@ class LoginViewController: UIViewController {
         view.addSubviews(gifImageView, loginView)
         
         // Setup navigation bar
+        let textAtributted = [NSAttributedString.Key.strokeColor : UIColor.black]
         self.navigationItem.title = "Log in"
+        self.navigationController?.navigationBar.titleTextAttributes = textAtributted
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.tintColor = .black

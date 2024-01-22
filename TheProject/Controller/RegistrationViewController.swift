@@ -21,6 +21,10 @@ final class RegistrationViewController: UIViewController {
     }()
     let registrationView = RegistrationView()
     
+    //MARK: - Properties
+    
+    let firebaseManager = FirebaseManager()
+    
     //MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -63,7 +67,8 @@ final class RegistrationViewController: UIViewController {
     //MARK: - Objective - C methods
     
     @objc func registerButtonTapped() {
-        print("Register")
+        guard let email = registrationView.emailTextField.textField.text, let passwordTextField = registrationView.passwordTextField.textField.text, let repeatPassword = registrationView.repeatPasswordTextField.textField.text, let name = registrationView.nameTextField.textField.text else { return }
+        firebaseManager.createUser(email: email, password: passwordTextField, name: name)
     }
     
 }
@@ -71,7 +76,7 @@ enum Constans {
     
     static let tenPoints: CGFloat = 10
     static let twentyPoints: CGFloat = 20
-    static let gifImageWidth: CGFloat = 100
+    static let gifImageWidth: CGFloat = 200
     static let gifImageHeight: CGFloat = 80
     
 }

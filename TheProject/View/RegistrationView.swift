@@ -17,10 +17,10 @@ class RegistrationView: UIView {
     private lazy var repeatPasswordLabel = CustomLabel(text: "Repeat password", font: .boldSystemFont(ofSize: 15))
     
     // Text field's
-    private lazy var nameTextField = CustomTextField(placeholder: "Enter your name", textColor: .white)
-    private lazy var emailTextField = CustomTextField(placeholder: "Enter your email", textColor: .white)
-    private lazy var passwordTextField = CustomTextField(placeholder: "Enter password", textColor: .white)
-    private lazy var repeatPasswordTextField = CustomTextField(placeholder: "Repeat password", textColor: .white)
+    let nameTextField = CustomTextField(placeholder: "Enter your name", textColor: .white)
+    let emailTextField = CustomTextField(placeholder: "Enter your email", textColor: .white)
+    let passwordTextField = CustomTextField(placeholder: "Enter password", textColor: .white)
+    let repeatPasswordTextField = CustomTextField(placeholder: "Repeat password", textColor: .white)
     
     // Button's
     private lazy var registerButton: UIButton = {

@@ -20,6 +20,17 @@ class FirebaseManager {
     
     //MARK: - Methods
     
+    /// Registration method
+    func createUser(email: String, password: String, name: String? = nil) {
+        auth.createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                print("Ошибка при регистрации: \(String(describing: error.localizedDescription))")
+            } else {
+                print("Пользователь успешно зарегистрирован: \(String(describing: error?.localizedDescription))")
+            }
+        }
+    }
+    
     /// Sign in method
     func login(email: String, password: String) {
         

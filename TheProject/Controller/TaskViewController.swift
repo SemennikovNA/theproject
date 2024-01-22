@@ -31,7 +31,6 @@ class TaskViewController: UIViewController {
         setupView()
         setupConstraints()
         
-        
         // Delegate
         taskTable.dataSource = self
         taskTable.reloadData()
@@ -46,12 +45,8 @@ class TaskViewController: UIViewController {
         view.addSubviews(taskTable)
         
         //Configure navigation controller
-        let backButton = UIBarButtonItem()
         let addedButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addedButtonTapped))
         addedButton.tintColor = .dynamicText
-        backButton.title = "На главную"
-        backButton.tintColor = .dynamicText
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         self.navigationItem.rightBarButtonItem = addedButton
         self.navigationItem.title = "Задачи 📋"
         self.navigationController?.navigationBar.prefersLargeTitles = true

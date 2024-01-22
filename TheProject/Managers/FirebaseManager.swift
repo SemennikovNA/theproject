@@ -61,7 +61,7 @@ class FirebaseManager {
                 } else {
                     let newLoginVC = LoginViewController()
                     navigationController.setViewControllers([newLoginVC], animated: true)
-//                    print("LoginViewController не найден в стеке навигации.")
+                    print("LoginViewController не найден в стеке навигации.")
                 }
             }
         } catch {

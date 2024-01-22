@@ -41,8 +41,7 @@ class AddedViewController: UIViewController {
     @objc func addedButtonTapped() {
         let taskVC = TaskViewController()
         taskVC.modalTransitionStyle = .flipHorizontal
-        guard let task = addedView.taskTextField.text else { return }
-        guard let description = addedView.descriptionTextField.text else { return }
+        guard let task = addedView.taskTextField.text, let description = addedView.descriptionTextField.text else { return }
         print(task, description)
     }
 }

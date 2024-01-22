@@ -10,16 +10,33 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let firebaseManager = FirebaseManager()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        if let ws = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: ws)
-            let mainVC = LoginViewController()
-            let nvc = UINavigationController(rootViewController: mainVC)
-            window.rootViewController = nvc
-            self.window = window
-            window.makeKeyAndVisible()
+        guard let windowScene = scene as? UIWindowScene else { return }
+            window = UIWindow(windowScene: windowScene)
+            checkAuth()
+            window?.makeKeyAndVisible()
         }
+    
+    private func checkAuth() {
+        if firebaseManager.auth.currentUser == nil {
+            getAuthScreen()
+        } else {
+            getHomeScreen()
+        }
+    }
+    
+    private func getHomeScreen() {
+            let taskVC = TaskViewController()
+            let nvc = UINavigationController(rootViewController: taskVC)
+            window?.rootViewController = nvc
+        }
+    
+    private func getAuthScreen() {
+        let loginVC = LoginViewController()
+        let nvc = UINavigationController(rootViewController: loginVC)
+        window?.rootViewController = nvc
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

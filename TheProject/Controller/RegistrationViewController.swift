@@ -67,11 +67,13 @@ final class RegistrationViewController: UIViewController {
     //MARK: - Objective - C methods
     
     @objc func registerButtonTapped() {
-        guard let email = registrationView.emailTextField.textField.text, let passwordTextField = registrationView.passwordTextField.textField.text, let repeatPassword = registrationView.repeatPasswordTextField.textField.text, let name = registrationView.nameTextField.textField.text else { return }
-        firebaseManager.createUser(email: email, password: passwordTextField, name: name)
+        guard let email = registrationView.emailTextField.textField.text, let password = registrationView.passwordTextField.textField.text, let repeatPassword = registrationView.repeatPasswordTextField.textField.text, let name = registrationView.nameTextField.textField.text else { return }
+        print(name, email, password, repeatPassword)
+        //        firebaseManager.createUser(email: email, password: passwordTextField, name: name)
     }
     
 }
+
 enum Constans {
     
     static let tenPoints: CGFloat = 10

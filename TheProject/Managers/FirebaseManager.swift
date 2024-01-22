@@ -15,8 +15,9 @@ class FirebaseManager {
     
     static let shared = FirebaseManager()
     
-    let id = Auth.auth().currentUser?.uid
     let auth = Auth.auth()
+    let id = Auth.auth().currentUser?.uid
+    
     
     //MARK: - Methods
     
@@ -33,7 +34,6 @@ class FirebaseManager {
     
     /// Sign in method
     func login(email: String, password: String) {
-        
         auth.signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print("Ошибка при входе: \(error.localizedDescription)")
@@ -51,7 +51,6 @@ class FirebaseManager {
     
     /// Logout method
     func logout() {
-        
         do {
             try auth.signOut()
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -60,11 +59,25 @@ class FirebaseManager {
                 if let loginVC = navigationController.viewControllers.first(where: { $0 is LoginViewController }) as? LoginViewController {
                     navigationController.popToViewController(loginVC, animated: true)
                 } else {
-                    print("LoginViewController не найден в стеке навигации.")
+                    let newLoginVC = LoginViewController()
+                    navigationController.setViewControllers([newLoginVC], animated: true)
+//                    print("LoginViewController не найден в стеке навигации.")
                 }
             }
         } catch {
             print("Exit error")
+        }
+    }
+    
+    /// Get the currently signed-in user
+    func getCurrentUser() {
+        auth.addStateDidChangeListener { authResult, user in
+            if self.auth.currentUser != nil {
+                let userDisplayName = self.auth.currentUser?.displayName
+                print("User is authorized: \(String(describing: userDisplayName))")
+            } else {
+                print("User is not authorized")
+            }
         }
     }
 }

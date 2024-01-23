@@ -84,6 +84,7 @@ class LoginViewController: UIViewController {
         guard let email = loginView.emailTextField.textField.text, 
                 let password = loginView.passwordTextField.textField.text else { return }
         firebaseManager.login(email: email, password: password)
+        firebaseManager.getCurrentUser()
     }
     
     @objc func createAccountButtonTapped() {

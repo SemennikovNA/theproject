@@ -28,6 +28,7 @@ class FirebaseManager {
                 print("Ошибка при регистрации: \(String(describing: error.localizedDescription))")
             } else {
                 print("Пользователь успешно зарегистрирован: \(String(describing: error?.localizedDescription))")
+                self.setUserInfo(name: name)
             }
         }
     }
@@ -41,8 +42,8 @@ class FirebaseManager {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                    let sceneDelegate = windowScene.delegate as? SceneDelegate,
                    let navigationController = sceneDelegate.window?.rootViewController as? UINavigationController {
-                    let taskVC = TaskViewController()
-                    navigationController.pushViewController(taskVC, animated: true)
+                    let tabBar = TabBarController()
+                    navigationController.pushViewController(tabBar, animated: true)
                 }
                 print("Пользователь успешно вошел: \(authResult?.user.uid ?? "")")
             }
@@ -73,11 +74,25 @@ class FirebaseManager {
     func getCurrentUser() {
         auth.addStateDidChangeListener { authResult, user in
             if self.auth.currentUser != nil {
-                let userDisplayName = self.auth.currentUser?.displayName
+                guard let userDisplayName = self.auth.currentUser?.displayName else { return }
                 print("User is authorized: \(String(describing: userDisplayName))")
             } else {
                 print("User is not authorized")
             }
         }
+    }
+    
+    /// Method allows you to change profile data
+    
+    func setUserInfo(name: String?) {
+        guard let name = name else { return }
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = name
+        changeRequest?.commitChanges(completion: { error in
+            guard error != nil else {
+                print(String(describing: error))
+                return
+            }
+        })
     }
 }

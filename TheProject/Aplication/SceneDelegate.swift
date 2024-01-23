@@ -28,8 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func getHomeScreen() {
-        let taskVC = TaskViewController()
-        let nvc = UINavigationController(rootViewController: taskVC)
+        let tabBar = TabBarController()
+        let nvc = UINavigationController(rootViewController: tabBar)
         window?.rootViewController = nvc
     }
     

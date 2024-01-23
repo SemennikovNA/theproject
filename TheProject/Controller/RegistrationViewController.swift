@@ -68,8 +68,8 @@ final class RegistrationViewController: UIViewController {
     
     @objc func registerButtonTapped() {
         guard let email = registrationView.emailTextField.textField.text, let password = registrationView.passwordTextField.textField.text, let repeatPassword = registrationView.repeatPasswordTextField.textField.text, let name = registrationView.nameTextField.textField.text else { return }
-        print(name, email, password, repeatPassword)
-        //        firebaseManager.createUser(email: email, password: passwordTextField, name: name)
+        firebaseManager.createUser(email: email, password: password, name: name)
+        navigationController?.popViewController(animated: true)
     }
     
 }
